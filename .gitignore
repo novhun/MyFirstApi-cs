@@ -1,0 +1,52 @@
+# .NET build output
+bin/
+obj/
+out/
+artifacts/
+publish/
+
+# NuGet packages and local package feeds
+packages/
+*.nupkg
+*.snupkg
+
+# Visual Studio and .NET user state
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.cache
+
+# Test and coverage output
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Local SQLite database and sidecar files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+
+# Local secrets and environment overrides
+secrets.json
+.env
+.env.*
+!.env.example
+
+# Editor settings (keep shared launch/tasks/extensions recommendations)
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# macOS and Windows files
+.DS_Store
+Thumbs.db
+Desktop.ini
