@@ -1,6 +1,6 @@
 # MyFirstApi-cs
 
-A minimal ASP.NET Core API for managing products, with SQLite persistence.
+An ASP.NET Core MVC API for managing products, with SQLite persistence.
 
 ## Run the API
 
@@ -8,10 +8,25 @@ Install the .NET 10 SDK, then run these commands from the project directory:
 
 ```bash
 dotnet restore
+set -a
+source .env
+set +a
 dotnet run --launch-profile http
 ```
 
-The API listens at `http://localhost:5203`. On first startup, it creates `products.db` and the `Products` table in the project directory.
+The API listens at `http://localhost:5203`. On first startup, it creates `products.db` and the `Products` table in the project directory. `.env` is ignored by Git; use `.env.example` as the shareable template.
+
+## Project structure
+
+```text
+Controllers/ProductsController.cs   Product CRUD actions and route attributes
+Router/ApiRoutes.cs                 Registers MVC controller routes
+Contracts/ProductRequests.cs        Create/update request and response DTOs
+Data/ProductDbContext.cs            EF Core SQLite database context
+Models/Product.cs                   Product database entity
+```
+
+`Program.cs` registers MVC and calls `MapApiRoutes()`. The router delegates route discovery to MVC; the controller's attributes define the `/api/products` URLs.
 
 ## Product endpoints
 

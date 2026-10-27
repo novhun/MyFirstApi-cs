@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using MyFirstApi_cs.Data;
-using MyFirstApi_cs;
+using MyFirstApi_cs.Router;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-builder.Services.AddValidation();
+builder.Services.AddControllers();
 builder.Services.AddDbContext<ProductDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Products")));
 
@@ -29,6 +29,6 @@ await using (var scope = app.Services.CreateAsyncScope())
     await database.Database.EnsureCreatedAsync();
 }
 
-app.MapProductEndpoints();
+app.MapApiRoutes();
 
 app.Run();
